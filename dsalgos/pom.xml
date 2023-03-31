@@ -81,8 +81,6 @@
     <gmavenplus.plugin.version>2.1.0</gmavenplus.plugin.version>
     <lombok.version>1.18.26</lombok.version>
     <junit.version>5.9.2</junit.version>
-    <build.helper.plugin.version>
-    3.3.0</build.helper.plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -453,25 +451,6 @@
           <artifactId>versions-maven-plugin</artifactId>
           <version>${maven.versions.plugin.version}</version>
         </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>${build.helper.plugin.version}</version>
-          <executions>
-            <execution>
-              <id>add-test-source</id>
-              <phase>generate-test-sources</phase>
-              <goals>
-                <goal>add-test-source</goal>
-              </goals>
-              <configuration>
-                <sources>
-                  <source>src/main/java/ds</source>
-                </sources>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -516,10 +495,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
