@@ -1,6 +1,8 @@
-open module ds.tests {
+open module ds {
   requires java.logging;
-  requires ds;
+
+  exports ds;
+
   requires org.mockito;
   requires transitive org.junit.jupiter.api;
   requires transitive org.junit.jupiter.params;

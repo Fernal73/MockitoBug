@@ -81,6 +81,8 @@
     <gmavenplus.plugin.version>2.1.0</gmavenplus.plugin.version>
     <lombok.version>1.18.26</lombok.version>
     <junit.version>5.9.2</junit.version>
+    <build.helper.plugin.version>
+    3.3.0</build.helper.plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -166,7 +168,6 @@
             </includes>
             <useModulePath>false</useModulePath>
             <trimStackTrace>true</trimStackTrace>
-            <!-- Activate the use of TCP to transmit events to the plugin -->
             <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory" />
           </configuration>
         </plugin>
@@ -181,21 +182,6 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven.compiler.plugin.version}</version>
-          <configuration>
-            <fork>true</fork>
-            <release>${java.version}</release>
-            <compilerArguments>
-              <Xmaxerrs>10000</Xmaxerrs>
-              <Xmaxwarns>10000</Xmaxwarns>
-            </compilerArguments>
-            <showWarnings>true</showWarnings>
-            <verbose>true</verbose>
-            <compilerArgs>
-              <arg>
-              -J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
-              <arg>-Awarns</arg>
-            </compilerArgs>
-          </configuration>
           <executions>
             <execution>
               <id>default-compile</id>
@@ -211,6 +197,22 @@
               <goals>
                 <goal>compile</goal>
               </goals>
+              <configuration>
+                <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                <fork>true</fork>
+                <release>${java.version}</release>
+                <compilerArguments>
+                  <Xmaxerrs>10000</Xmaxerrs>
+                  <Xmaxwarns>10000</Xmaxwarns>
+                </compilerArguments>
+                <showWarnings>true</showWarnings>
+                <verbose>true</verbose>
+                <compilerArgs>
+                  <arg>
+                  -J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                  <arg>-Awarns</arg>
+                </compilerArgs>
+              </configuration>
             </execution>
             <execution>
               <id>compile-test</id>
@@ -218,6 +220,24 @@
               <goals>
                 <goal>testCompile</goal>
               </goals>
+              <configuration>
+                <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                <fork>true</fork>
+                <release>${java.version}</release>
+                <compilerArguments>
+                  <sourcepath>
+                  ${project.basedir}/src/test/java/ds</sourcepath>
+                  <Xmaxerrs>10000</Xmaxerrs>
+                  <Xmaxwarns>10000</Xmaxwarns>
+                </compilerArguments>
+                <showWarnings>true</showWarnings>
+                <verbose>true</verbose>
+                <compilerArgs>
+                  <arg>
+                  --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                  <arg>-Awarns</arg>
+                </compilerArgs>
+              </configuration>
             </execution>
           </executions>
         </plugin>
@@ -433,6 +453,25 @@
           <artifactId>versions-maven-plugin</artifactId>
           <version>${maven.versions.plugin.version}</version>
         </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>${build.helper.plugin.version}</version>
+          <executions>
+            <execution>
+              <id>add-test-source</id>
+              <phase>generate-test-sources</phase>
+              <goals>
+                <goal>add-test-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>src/main/java/ds</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
@@ -477,6 +516,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
