@@ -4,6 +4,7 @@ open module ds {
   exports ds;
 
   requires org.mockito;
+  requires net.bytebuddy.agent;
   requires transitive org.junit.jupiter.api;
   requires transitive org.junit.jupiter.params;
   requires transitive org.junit.platform.launcher;
