@@ -188,10 +188,11 @@
             <jvm>${env.JAVA_HOME}/bin/java</jvm>
             <runOrder>alphabetical</runOrder>
             <rerunFailingTestsCount>0</rerunFailingTestsCount>
-            <argline>-Xms1g -Xmx4g
-            -XX:MaxMetaspaceSize=512m</argline>
+            <argline>-Xms1g -Xmx4g -XX:MaxMetaspaceSize=512m
+            -XX:+StartAttachListener</argline>
             <argline>--illegal-access=deny</argline>
             <argline>-Djavaagent=byte-buddy-agent.jar</argline>
+            <argline>-Djdk.attach.allowAttachSelf=true</argline>
             <argline>--add-opens ds/ds.tests=ALL-UNNAMED</argline>
             <useModulePath>true</useModulePath>
             <trimStackTrace>true</trimStackTrace>
