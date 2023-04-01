@@ -185,7 +185,11 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven.surefire.plugin.version}</version>
           <configuration>
-            <forkCount>2</forkCount>
+            <forkCount>1</forkCount>
+            <reuseForks>false</reuseForks>
+            <forkedProcessExitTimeoutInSeconds>
+            30</forkedProcessExitTimeoutInSeconds>
+            <shutdown>kill</shutdown>
             <jvm>${env.JAVA_HOME}/bin/java</jvm>
             <runOrder>alphabetical</runOrder>
             <rerunFailingTestsCount>0</rerunFailingTestsCount>
