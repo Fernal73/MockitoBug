@@ -11,6 +11,7 @@ open module ds {
   requires transitive org.junit.platform.engine;
   requires transitive org.junit.platform.launcher;
   requires org.mockito;
+  requires org.mockito.junit.jupiter;
 
   exports ds;
 }
