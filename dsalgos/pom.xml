@@ -185,6 +185,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven.surefire.plugin.version}</version>
           <configuration>
+            <forkCount>2</forkCount>
             <jvm>${env.JAVA_HOME}/bin/java</jvm>
             <runOrder>alphabetical</runOrder>
             <rerunFailingTestsCount>0</rerunFailingTestsCount>
@@ -193,9 +194,10 @@
             <argline>--illegal-access=deny</argline>
             <argline>-Djavaagent=byte-buddy-agent.jar</argline>
             <argline>-Djdk.attach.allowAttachSelf=true</argline>
-            <argline>--add-opens ds/ds.tests=ALL-UNNAMED</argline>
+            <argline>--add-opens ds/ds=ALL-UNNAMED</argline>
             <useModulePath>true</useModulePath>
             <trimStackTrace>true</trimStackTrace>
+            <useSystemClassLoader>true</useSystemClassLoader>
             <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory" />
           </configuration>
         </plugin>
@@ -262,7 +264,7 @@
                 <verbose>true</verbose>
                 <compilerArgs>
                   <arg>
-                  --add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
+                  -J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
                   <arg>-Awarns</arg>
                 </compilerArgs>
               </configuration>

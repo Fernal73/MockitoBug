@@ -1,7 +1,5 @@
-package ds.tests;
+package ds;
 
-import ds.IArray;
-import ds.OrdArray;
 import java.util.Optional;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;

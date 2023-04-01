@@ -1,9 +1,8 @@
-package ds.tests;
+package ds;
 
-import static ds.tests.TestData.INIT_TOSTRING_DATA;
+import static ds.TestData.INIT_TOSTRING_DATA;
 import static org.mockito.Mockito.*;
 
-import ds.IArray;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;

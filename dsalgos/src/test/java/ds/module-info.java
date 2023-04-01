@@ -1,8 +1,5 @@
 open module ds {
   requires java.logging;
-
-  exports ds;
-
   requires org.mockito;
   requires net.bytebuddy.agent;
   requires transitive org.junit.jupiter.api;
@@ -11,5 +8,5 @@ open module ds {
   requires transitive org.junit.platform.commons;
   requires transitive org.junit.platform.engine;
 
-  exports ds.tests;
+  exports ds;
 }
