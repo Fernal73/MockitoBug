@@ -192,9 +192,7 @@
             -XX:MaxMetaspaceSize=512m</argline>
             <argline>--illegal-access=deny</argline>
             <argline>-Djavaagent=byte-buddy-agent.jar</argline>
-            <includes>
-              <include>**/*Test.java</include>
-            </includes>
+            <argline>--add-opens ds/ds.tests=ALL-UNNAMED</argline>
             <useModulePath>true</useModulePath>
             <trimStackTrace>true</trimStackTrace>
             <forkNode implementation="org.apache.maven.plugin.surefire.extensions.SurefireForkNodeFactory" />
