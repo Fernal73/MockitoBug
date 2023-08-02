@@ -1,4 +1,7 @@
 open module ds {
+  requires jdk.attach;
+  requires java.instrument;
+  requires jdk.unsupported;
   requires java.logging;
   requires java.compiler;
   requires java.management;
